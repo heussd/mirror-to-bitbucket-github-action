@@ -1,9 +1,9 @@
+name: Mirror to BitBucket (local)
 on: []
 
 jobs:
   mirror-to-bitbucket:
     runs-on: ubuntu-latest
-    name: Mirror to BitBucket (local)
     steps:
       - name: Checkout
         uses: actions/checkout@v2
