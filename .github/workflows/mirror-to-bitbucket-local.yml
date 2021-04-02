@@ -1,15 +1,16 @@
-on: [push]
+on: []
 
 jobs:
   mirror-to-bitbucket:
     runs-on: ubuntu-latest
-    name: Mirror to BitBucket
+    name: Mirror to BitBucket (local)
     steps:
       - name: Checkout
         uses: actions/checkout@v2
         with:
           fetch-depth: 0 # <-- clone with complete history
       - name: Push
-        uses: heussd/mirror-to-bitbucket-github-action@main
+        uses: ./ # Uses an action in the root directory
+        id: mirror-to-bitbucket
         with:
           password: ${{ secrets.BITBUCKET_PASSWORD }}

@@ -26,7 +26,7 @@ None
       - name: Checkout
         uses: actions/checkout@v2
         with:
-          fetch-depth: 0 # <-- Do not checkout a shallow clone, clone with complete history
+          fetch-depth: 0 # <-- clone with complete history
       - name: Push
         uses: ./ # Uses an action in the root directory
         id: mirror-to-bitbucket
