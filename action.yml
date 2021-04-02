@@ -1,0 +1,22 @@
+name: 'Mirror to BitBucket GitHub Action'
+description: 'Mirrors a GitHub Git repository to BitBucket'
+branding:
+  icon: upload-cloud
+  color: blue
+inputs:
+  username:
+    required: true
+    default: ${{ github.actor }}
+  password:
+    required: true
+  repository:
+    required: true
+    default: ${{ github.event.repository.name }}
+
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.username }}
+    - ${{ inputs.password }}
+    - ${{ inputs.repository }}

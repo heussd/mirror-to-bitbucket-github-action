@@ -1,0 +1,16 @@
+on: [push]
+
+jobs:
+  hello_world_job:
+    runs-on: ubuntu-latest
+    name: Mirror to BitBucket
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0 # <-- Do not checkout a shallow clone, clone with complete history
+      - name: Push
+        uses: ./ # Uses an action in the root directory
+        id: mirror-to-bitbucket
+        with:
+          password: ${{ secrets.BITBUCKET_PASSWORD }}
