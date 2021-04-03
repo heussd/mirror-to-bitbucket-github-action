@@ -1,0 +1,28 @@
+name: Release Docker on GitHub Packages
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+
+  build-and-push:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repo
+      uses: actions/checkout@v1
+    - name: Set up QEMU
+      uses: docker/setup-qemu-action@v1
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v1
+    - name: Login to Github Packages
+      run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login -u "${{ github.actor }}" --password-stdin docker.pkg.github.com
+    - name: Build & push the image
+      run: |
+        docker buildx build --push \
+          --tag docker.pkg.github.com/"${{ github.actor }}"/${{ github.event.repository.name }}/${{ github.event.repository.name }}:latest \
+          --platform amd64 .
