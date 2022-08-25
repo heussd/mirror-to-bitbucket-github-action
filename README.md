@@ -7,7 +7,7 @@ Mirrors a GitHub Git repository to BitBucket. If no corresponding BitBucket repo
 ## Required Inputs
 
 ### `password`
-Password to use on bitbucket for authentication and for pushing.
+Password to use on bitbucket for authentication and for pushing. **Create a new [App Password](https://bitbucket.org/account/settings/app-passwords/) with repository read and write permissions.**
 
 
 ## Optional Inputs
