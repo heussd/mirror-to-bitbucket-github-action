@@ -1,4 +1,8 @@
-# Mirror to BitBucket GitHub Action
+---
+title: Mirror to BitBucket GitHub Action
+summary: GitHub Action to automatically mirror to BitBucket.
+---
+
 
 Mirrors a GitHub Git repository to BitBucket. If no corresponding BitBucket repository exists, it is created using the [BitBucket API 2.0](https://developer.atlassian.com/bitbucket/api/2/reference/).
 
