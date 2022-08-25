@@ -28,7 +28,7 @@ None
         with:
           fetch-depth: 0 # <-- clone with complete history
       - name: Push
-        uses: ./ # Uses an action in the root directory
+        uses: heussd/mirror-to-bitbucket-github-action@main
         id: mirror-to-bitbucket
         with:
           password: ${{ secrets.BITBUCKET_PASSWORD }}
