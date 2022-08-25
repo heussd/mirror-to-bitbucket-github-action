@@ -14,9 +14,7 @@ inputs:
     default: ${{ github.event.repository.name }}
 
 runs:
-  using: 'docker'
-  image: 'docker://ghcr.io/heussd/mirror-to-bitbucket-github-action:main'
-  args:
-    - ${{ inputs.username }}
-    - ${{ inputs.password }}
-    - ${{ inputs.repository }}
+  using: "composite"
+  steps:
+    - run: ${{ github.action_path }}/fillbucket.sh "${{ inputs.username }}" "${{ inputs.password }}" "${{ inputs.repository }}"
+      shell: bash
