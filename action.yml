@@ -12,9 +12,12 @@ inputs:
   repository:
     required: true
     default: ${{ github.event.repository.name }}
+  spacename:
+    required: true
+    default: ${{ github.actor }}
 
 runs:
   using: "composite"
   steps:
-    - run: ${{ github.action_path }}/fillbucket.sh "${{ inputs.username }}" "${{ inputs.password }}" "${{ inputs.repository }}"
+    - run: ${{ github.action_path }}/fillbucket.sh "${{ inputs.username }}" "${{ inputs.password }}" "${{ inputs.repository }}" "${{ inputs.spacename }}"
       shell: bash

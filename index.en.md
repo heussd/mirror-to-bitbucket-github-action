@@ -23,6 +23,9 @@ Username to use on Bitbucket for 1) authentication and as 2) workspace name. Def
 ### `repository`
 Name of the repository on Bitbucket. If it does not exist, it is created automatically. Default: GitHub repository name.
 
+### `spacename`
+Name of the space in which the repository should be contained on Bitbucket. Default:  GitHub user name.
+
 ## Outputs
 None
 
@@ -34,7 +37,20 @@ None
         with:
           fetch-depth: 0 # <-- clone with complete history
       - name: Push
-        uses: heussd/mirror-to-bitbucket-github-action@main
-        id: mirror-to-bitbucket
+        uses: heussd/mirror-to-bitbucket-github-action@v2
         with:
+          password: ${{ secrets.BITBUCKET_PASSWORD }}
+
+## Example with all parameters
+
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0 # <-- clone with complete history
+      - name: Push
+        uses: heussd/mirror-to-bitbucket-github-action@v2
+        with:
+          username: mycrazybbusername
+          spacename: teamspace
+          repository: bestrepo
           password: ${{ secrets.BITBUCKET_PASSWORD }}
